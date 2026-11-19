@@ -27,7 +27,7 @@ flowchart LR
 - **Remote access:** WireGuard for administration; selected services published through Cloudflare proxy, WAF rules and Authelia (SSO + MFA). The router only accepts HTTPS from Cloudflare IP ranges.
 - **Compute:** Proxmox VE + Proxmox Backup Server, Docker Compose service stack.
 - **Monitoring:** Zabbix 7 + Grafana (SNMP, agents, UPS via NUT).
-- **Documentation as code:** lab inventory in [RackPeek](https://github.com/Timmoth/RackPeek) YAML, published as a read-only viewer on GitHub Pages.
+- **Documentation as code:** lab inventory in [RackPeek](https://github.com/Timmoth/RackPeek) YAML, published as a [read-only viewer on GitHub Pages](https://rubenih.github.io/homelab/).
 
 ## 🧰 Tech stack
 
