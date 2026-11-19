@@ -2,7 +2,7 @@
 
 **Network Engineer · NetOps** at **Orbius** (formerly MTNSat / Anuvu) — maritime and satellite networks, Cantabria, Spain.
 
-I design, deploy and troubleshoot enterprise networks for vessels and remote sites: VSAT and LEO (Starlink, OneWeb), SD-WAN, multi-vendor routing and firewalls. I led the migration of 200+ clients from a legacy iDirect VSAT platform to SES FLEX, and I act as Tier-3 escalation for the NOC.
+I design, deploy and troubleshoot enterprise networks for vessels and remote sites: VSAT and LEO (Starlink, OneWeb), SD-WAN, multi-vendor routing and firewalls. I also act as Tier-3 escalation for the NOC.
 
 At home I run a small production-style lab where I test the same ideas end to end.
 
