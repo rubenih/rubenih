@@ -1,34 +1,44 @@
-# Hi there, I'm Ruben 👋
+# Hi, I'm Ruben 👋
 
-Welcome to my GitHub profile! I am a Systems & Network enthusiast with a strong focus on Networking and and self-hosted environments. 
-I use my home lab as a continuous learning ground to design, deploy, and manage enterprise-grade architectures on a smaller scale.
+**Network Engineer · NetOps** at **Orbius** (formerly MTNSat / Anuvu) — maritime and satellite networks, Cantabria, Spain.
 
-## My Home Lab Architecture
+I design, deploy and troubleshoot enterprise networks for vessels and remote sites: VSAT and LEO (Starlink, OneWeb), SD-WAN, multi-vendor routing and firewalls. I led the migration of 200+ clients from a legacy iDirect VSAT platform to SES FLEX, and I act as Tier-3 escalation for the NOC.
 
-I manage a fully functional, highly available home data center. My approach prioritizes security (VLAN isolation), automation, and robust monitoring.
+At home I run a small production-style lab where I test the same ideas end to end.
 
-* **Hypervisor & Storage:** Proxmox VE, TrueNAS (ZFS storage with hardware passthrough).
-* **Networking:** Mikrotik routing, Ubiquiti UniFi Access Points, strict VLAN segmentation (IoT, Guest, Trusted, Management).
-* **Containerization:** Docker & Docker Compose, securely exposed via Traefik reverse proxy.
-* **Monitoring & Power Management:** Network UPS Tools (NUT) for graceful shutdowns, Home Assistant for hardware telemetry and running my smart home.
-* **Documentation as Code:** RackPeek (YAML-based infrastructure documentation) and Microsoft Visio for logical network topologies.
+## 🏠 Home lab
 
-## Tech Stack & Tools
+**Repo:** [rubenih/homelab](https://github.com/rubenih/homelab) — architecture, configuration and documentation as code.
 
-* **Systems:** Linux (Debian/Ubuntu).
-* **Networking:** TCP/IP, DNS (AdGuard Home), DHCP, Firewall Rules, VLANs, VPN (WireGuard/DuckDNS).
-* **DevOps & IaC:** Git, Docker, Traefik, YAML.
-* **IoT & Smart Automation:** Home Assistant, Zigbee2MQTT, ESPHome.
+```mermaid
+flowchart LR
+    U([Internet]) --> CF[Cloudflare<br/>proxy + WAF]
+    CF -->|443, Cloudflare IPs only| RT[MikroTik CCR2004<br/>default-deny firewall]
+    VPN([WireGuard clients]) -->|admin access| RT
+    RT --> TR[Traefik] --> AU[Authelia<br/>SSO + MFA] --> SV[Self-hosted services]
+    RT --- V10[VLAN 10 · MGMT]
+    RT --- V30[VLAN 30 · ADMIN]
+    RT --- V31[VLAN 31 · Servers]
+    RT --- V40[VLAN 40 · Guest]
+    RT --- V50[VLAN 50 · IoT]
+```
 
-## What I'm currently working on
+- **Network:** MikroTik CCR2004 + Cisco SG200, five segmented VLANs, default-deny forward and output chains.
+- **Remote access:** WireGuard for administration; selected services published through Cloudflare proxy, WAF rules and Authelia (SSO + MFA). The router only accepts HTTPS from Cloudflare IP ranges.
+- **Compute:** Proxmox VE + Proxmox Backup Server, Docker Compose service stack.
+- **Monitoring:** Zabbix 7 + Grafana (SNMP, agents, UPS via NUT).
+- **Documentation as code:** lab inventory in [RackPeek](https://github.com/Timmoth/RackPeek) YAML, published as a read-only viewer on GitHub Pages.
 
-* Migrating my visual network documentation (Visio) into **Documentation-as-Code** using RackPeek.
-* Optimizing my Mikrotik firewall rules to eliminate broadcast noise across VLANs.
+## 🧰 Tech stack
 
-## How to reach me
+| Area | Tools |
+|---|---|
+| Networking & security | Cisco, MikroTik RouterOS, Palo Alto Networks, Peplink, pfSense, WireGuard, Tailscale |
+| Protocols | TCP/IP, NAT, DHCP, DNS, SD-WAN, QoS, HSRP, VRRP, ECMP |
+| Satellite & WAN | iDirect, Newtec, SES FLEX, SCPC/TDMA, Starlink, OneWeb |
+| Virtualization & containers | VMware ESXi, Proxmox VE, Docker, Docker Compose |
+| Monitoring & docs | Zabbix, Grafana, SolarWinds Orion, RackPeek, Visio, Confluence |
 
-* **LinkedIn:** linkedin.com/in/rubenih
-* **Email:** ruben.isa@protonmail.com
+## 📫 Contact
 
----
-*Fun fact: I treat my home network like a production environment — if it goes down, I have an automated Telegram bot screaming at me!*
+[LinkedIn](https://linkedin.com/in/rubenih) · [rubenisahidalgo@gmail.com](mailto:rubenisahidalgo@gmail.com)
